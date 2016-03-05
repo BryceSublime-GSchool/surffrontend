@@ -2,10 +2,17 @@ angular
   .module("surf")
   .controller("NavController", NavController)
 
-function NavController($http, $scope,  ApiService){
+function NavController($http, $scope, getCONT){
   $scope.thing = {}
-ApiService.getall().then(function(results){
+
+getCONT.getall().then(function(results){
   $scope.thing.allspots = results
-  
   })
+
+
 }
+
+
+// return function( item ) {
+//   return item.name === continent.name;
+// };

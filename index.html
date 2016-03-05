@@ -7,13 +7,22 @@
   </head>
   <body ng-controller="NavController">
 
+<select ng-model="cont"  ng-options="thing.continent for thing in thing.allspots.data | unique: 'continent'">
 
-<select ng-model="cont" ng-options="thing.continent for thing in thing.allspots.data | unique: 'continent'">
-  <option></option>
+<form ng-submit="getSpot({{cont.spot_id}})">
 </select>
+<select ng-model="cont" ng-options="thing.region for thing in thing.allspots.data | filter: {continent: cont.continent}  | unique: 'region'">
+</select>
+<select ng-model="cont" ng-options="thing.spot_name for thing in thing.allspots.data | filter: {region: cont.region} | unique: 'spot'">
+</select>
+<input type="submit" name="name" value="Lets Go">
+</form>
 
 <h3>{{cont.continent}}</h3>
-<h5>{{thing.regions}}</h5>
+<h3>{{cont.region}}</h3>
+<h3>{{cont.spot}}</h3>
+<h3>{{cont.spot_id}}</h3>
+
 <select>
   <option></option>
 </select>
@@ -28,6 +37,7 @@
   <script src="js/app.js"></script>
   <script src="js/controllers/NavController.js"></script>
   <script src="js/services/ApiService.js"></script>
+  <script src="js/filters/filters.js"></script>
 
 </body>
 </html>
