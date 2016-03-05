@@ -1,2 +1,2 @@
 angular
-  .module("surf", [])
+  .module("surf", ['angular.filter'])
